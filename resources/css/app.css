@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --color-brand: #0fa7b4;
+    --color-brand-600: #0c8a95;
+    --color-brand-50: #e6f7f8;
+    --color-charcoal: #1b1f24;
+    --color-ink: #0d0f12;
+}
+
+@utility btn {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+@layer base {
+    body {
+        @apply bg-neutral-100 text-neutral-800 antialiased dark:bg-ink dark:text-neutral-200;
+    }
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-brand;
+    }
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    .card {
+        @apply rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-charcoal;
+    }
+    .btn-primary {
+        @apply btn bg-brand text-white hover:bg-brand-600;
+    }
+    .btn-secondary {
+        @apply btn border border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-charcoal dark:text-neutral-100 dark:hover:bg-neutral-800;
+    }
+    .btn-danger {
+        @apply btn bg-red-600 text-white hover:bg-red-700;
+    }
+    .label {
+        @apply mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-300;
+    }
+    .input {
+        @apply block min-h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-brand focus:ring-2 focus:ring-brand/30 dark:border-neutral-700 dark:bg-ink dark:text-neutral-100;
+    }
+    .help {
+        @apply mt-1 text-xs text-neutral-500 dark:text-neutral-400;
+    }
+    .error {
+        @apply mt-1 text-xs font-medium text-red-600 dark:text-red-400;
+    }
+    .th {
+        @apply px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400;
+    }
+    .td {
+        @apply px-3 py-2.5 text-sm;
+    }
+    .badge {
+        @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
+    }
+    .nav-link {
+        @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 hover:bg-white/10 hover:text-white;
+    }
+    .nav-link-active {
+        @apply bg-brand/20 text-white;
+    }
+}
